@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Christopher Macachor">
+<meta name="description" content="A proposed clinical and academic research architecture connecting tiered translation, first- and second-order observation, treatment-level classification, scope audits, cross-disciplinary peer review, and an illustrative vestibular–ENS research program.">
+<meta name="citation_author" content="Christopher Macachor">
+<meta name="citation_publication_date" content="2026">
+<meta name="DC.creator" content="Christopher Macachor">
+<meta name="DC.title" content="The Macachor Tiered Translation, Scope Challenge, and Cross-Domain Research Architecture">
+<title>The Macachor Tiered Translation, Scope Challenge &amp; Cross-Domain Research Architecture</title>
+<style>
+:root {
+  --ink: #17212b;
+  --muted: #536272;
+  --paper: #f5f7f8;
+  --surface: #ffffff;
+  --line: #d9e0e5;
+  --accent: #174d67;
+  --accent-soft: #e8f1f5;
+  --gold: #8a6424;
+  --gold-soft: #f7f1e5;
+  --red: #8a3b36;
+  --red-soft: #f8eceb;
+  --green: #315e4b;
+  --green-soft: #eaf2ed;
+  --shadow: 0 12px 32px rgba(25, 43, 56, .07);
+  --radius: 16px;
+  --max: 1180px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 16px/1.66 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+header.site-header {
+  background: linear-gradient(145deg, #102d3c, #174d67 68%, #28677a);
+  color: #fff; padding: 58px 24px 48px;
+}
+.header-inner, main, footer { max-width: var(--max); margin: 0 auto; }
+.eyebrow { text-transform: uppercase; letter-spacing: .13em; font-size: .75rem; font-weight: 750; opacity: .82; }
+h1 { font-size: clamp(2rem, 4.6vw, 3.7rem); line-height: 1.08; max-width: 980px; margin: 16px 0; letter-spacing: -.035em; }
+.subtitle { max-width: 850px; font-size: 1.12rem; color: #e0edf2; }
+.authorline { margin-top: 28px; padding-top: 19px; border-top: 1px solid rgba(255,255,255,.24); display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: .9rem; color: #e0edf2; }
+.authorline a { color: #fff; }
+.header-note { margin-top: 25px; max-width: 900px; padding: 15px 18px; border: 1px solid rgba(255,255,255,.25); border-radius: 12px; background: rgba(255,255,255,.08); }
+main { padding: 28px 22px 72px; }
+.layout { display: grid; grid-template-columns: 245px minmax(0, 1fr); gap: 28px; align-items: start; }
+nav.contents { position: sticky; top: 18px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); max-height: calc(100vh - 36px); overflow: auto; }
+nav.contents strong { display:block; margin-bottom: 10px; font-size: .87rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+nav.contents a { display: block; padding: 6px 8px; border-radius: 8px; color: #31495a; text-decoration: none; font-size: .88rem; line-height: 1.35; }
+nav.contents a:hover, nav.contents a:focus { background: var(--accent-soft); outline: none; }
+article { min-width: 0; }
+section { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(20px, 3vw, 34px); margin-bottom: 22px; box-shadow: var(--shadow); }
+section h2 { font-size: clamp(1.45rem, 2.4vw, 2rem); line-height: 1.2; margin: 0 0 16px; letter-spacing: -.02em; }
+section h3 { font-size: 1.14rem; margin: 25px 0 9px; line-height: 1.3; }
+section h4 { font-size: .98rem; margin: 18px 0 6px; }
+p { margin: 10px 0 14px; }
+.lead { font-size: 1.12rem; color: #2d414f; }
+.kicker { color: var(--muted); font-size: .82rem; text-transform: uppercase; letter-spacing: .11em; font-weight: 750; margin-bottom: 8px; }
+.callout { border-left: 4px solid var(--accent); background: var(--accent-soft); border-radius: 0 12px 12px 0; padding: 16px 18px; margin: 18px 0; }
+.callout.warning { border-left-color: var(--gold); background: var(--gold-soft); }
+.callout.caution { border-left-color: var(--red); background: var(--red-soft); }
+.callout.success { border-left-color: var(--green); background: var(--green-soft); }
+.callout p:last-child { margin-bottom: 0; }
+.big-rule { font-size: 1.18rem; font-weight: 720; line-height: 1.5; }
+.grid-2, .grid-3 { display: grid; gap: 14px; margin: 16px 0; }
+.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.tile { border: 1px solid var(--line); border-radius: 12px; padding: 16px; background: #fcfdfd; }
+.tile h3, .tile h4 { margin-top: 0; }
+.tile p:last-child { margin-bottom: 0; }
+.tag { display:inline-block; font-size:.72rem; text-transform:uppercase; letter-spacing:.07em; font-weight:800; padding:4px 8px; border-radius:999px; background:var(--accent-soft); color:var(--accent); margin-bottom:8px; }
+.tag.gold { background:var(--gold-soft); color:var(--gold); }
+.tag.red { background:var(--red-soft); color:var(--red); }
+.tag.green { background:var(--green-soft); color:var(--green); }
+table { width:100%; border-collapse: collapse; margin: 16px 0 20px; font-size: .94rem; }
+th, td { text-align:left; vertical-align:top; border-bottom:1px solid var(--line); padding:11px 12px; }
+th { background:#f0f4f6; color:#304553; font-weight:750; }
+tr:last-child td { border-bottom:0; }
+.table-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:12px; }
+.table-wrap table { margin:0; min-width:640px; }
+code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+code { font-size:.91em; background:#f0f3f5; border-radius:5px; padding:2px 5px; }
+pre { background:#17212b; color:#e8eef2; padding:18px; border-radius:12px; overflow-x:auto; line-height:1.55; font-size:.84rem; }
+ul, ol { padding-left: 1.35rem; }
+li { margin: 6px 0; }
+.small { color:var(--muted); font-size:.88rem; }
+.status { display:inline-block; border:1px solid var(--line); border-radius:7px; padding:2px 7px; font-size:.75rem; font-weight:750; white-space:nowrap; }
+.status.established { background:var(--green-soft); border-color:#cbded1; color:var(--green); }
+.status.hypothesis { background:var(--gold-soft); border-color:#eadbbb; color:var(--gold); }
+.status.open { background:#f0f2f4; color:#475967; }
+.flow { display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); gap:8px; margin:18px 0; }
+.flow div { border:1px solid var(--line); border-radius:10px; padding:12px 10px; text-align:center; background:#fcfdfd; font-size:.88rem; }
+.flow b { display:block; color:var(--accent); font-size:1rem; margin-bottom:4px; }
+.flow .arrow { color:var(--muted); font-size:.75rem; }
+.checklist { list-style:none; padding:0; }
+.checklist li { padding:7px 0 7px 28px; position:relative; border-bottom:1px dashed var(--line); }
+.checklist li::before { content:"□"; position:absolute; left:3px; top:6px; color:var(--accent); font-size:1.1rem; }
+.source-list li { margin-bottom:11px; }
+.source-list a { font-weight:650; }
+hr { border:0; border-top:1px solid var(--line); margin:24px 0; }
+footer { color:var(--muted); padding:0 22px 45px; font-size:.87rem; }
+footer .footbox { border-top:1px solid var(--line); padding-top:18px; }
+@media (max-width: 850px) {
+  .layout { grid-template-columns:1fr; }
+  nav.contents { position:relative; top:0; max-height:none; }
+  nav.contents .navlinks { columns:2; }
+  .grid-3 { grid-template-columns:1fr; }
+}
+@media (max-width: 560px) {
+  header.site-header { padding:40px 18px 34px; }
+  main { padding:18px 12px 50px; }
+  section { padding:20px 16px; }
+  .grid-2, .flow { grid-template-columns:1fr; }
+  nav.contents .navlinks { columns:1; }
+  .authorline { display:block; }
+  .authorline span { display:block; margin:5px 0; }
+}
+@media print {
+  body { background:#fff; font-size:10.5pt; }
+  header.site-header { background:#fff; color:#000; padding:20px 0; }
+  .subtitle, .authorline, .header-note { color:#333; }
+  .authorline a { color:#000; }
+  main { padding:0; }
+  .layout { display:block; }
+  nav.contents { display:none; }
+  section { box-shadow:none; break-inside:avoid; border:1px solid #bbb; margin:12px 0; }
+  a { color:#000; }
+  footer { padding:0; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="eyebrow">Macachor Research Architecture · Clinical Translation · Cross-Domain Review</div>
+    <h1>The Tiered Translation, Scope Challenge &amp; Cross-Domain Research Architecture</h1>
+    <p class="subtitle">A unified method for preserving original observations, translating them across clinical and academic audiences, distinguishing symptoms from causes, auditing disciplinary boundaries, and testing candidate invariants across connected territories.</p>
+    <div class="authorline">
+      <span><strong>Author:</strong> Christopher Macachor</span>
+      <span><strong>ORCID:</strong> <a href="https://orcid.org/0009-0008-0100-2856">0009-0008-0100-2856</a></span>
+      <span><strong>Research:</strong> <a href="https://scalar.macachor.org/">Macachor Absolute Scalar Research</a></span>
+      <span><strong>Affiliations:</strong> Macachor Absolute Scalar Research · Scalar Consciousness Research</span>
+      <span><strong>Year:</strong> 2026</span>
+    </div>
+    <div class="header-note"><strong>Document status:</strong> Proposed research and translation architecture. It is a methodology for organizing, questioning, and testing clinical and academic claims. It is not a validated clinical guideline, diagnostic instrument, or treatment protocol.</div>
+  </div>
+</header>
+<main>
+<div class="layout">
+<nav class="contents" aria-label="Document contents">
+  <strong>Contents</strong>
+  <div class="navlinks">
+    <a href="#governing">1. Governing principle</a>
+    <a href="#architecture">2. Tiered architecture</a>
+    <a href="#target">3. Treatment-level gate</a>
+    <a href="#observation">4. O₁ and O₂</a>
+    <a href="#scope">5. Scope challenge</a>
+    <a href="#firewalls">6. Firewall taxonomy</a>
+    <a href="#peer-review">7. Cross-domain peer review</a>
+    <a href="#case">8. Vestibular–ENS example</a>
+    <a href="#protocol">9. Research program</a>
+    <a href="#latency">10. Latency and measurement</a>
+    <a href="#registry">11. Invariant registry</a>
+    <a href="#disclosure">12. Data and disclosure</a>
+    <a href="#implementation">13. Implementation</a>
+    <a href="#validation">14. Evidence and falsification</a>
+    <a href="#principle">15. Governing statement</a>
+    <a href="#references">References</a>
+  </div>
+</nav>
+<article>
+<section id="governing">
+  <div class="kicker">Purpose and central problem</div>
+  <h2>1. Governing principle: one territory, multiple maps, shared examination</h2>
+  <p class="lead">Clinical and academic research needs a way to preserve the accuracy of specialist work without allowing a specialist's assigned scope to become the presumed boundary of the larger territory.</p>
+  <p>A study must define its population, condition, variables, instruments, setting, time window, and endpoints. These boundaries are necessary for experimental control and interpretable findings. They are not proof that the wider phenomenon is confined to those boundaries.</p>
+  <div class="callout">
+    <p class="big-rule">A study's scope is a boundary around the investigation, not a declaration that the territory ends there.</p>
+    <p>The method therefore requires two simultaneous obligations: preserve rigor inside the declared scope, and examine whether relevant observations or relationships have been excluded by that scope.</p>
+  </div>
+  <p>The architecture connects six functions:</p>
+  <div class="flow" aria-label="Research process flow">
+    <div><b>Observe</b><span class="arrow">Preserve the source</span></div>
+    <div><b>Translate</b><span class="arrow">Keep coordinates</span></div>
+    <div><b>Classify</b><span class="arrow">Name the target level</span></div>
+    <div><b>Challenge scope</b><span class="arrow">Identify exclusions</span></div>
+    <div><b>Test</b><span class="arrow">Return findings</span></div>
+  </div>
+  <p>The aim is not to force every medical condition into one explanation. It is to detect when different disciplines may be observing related parts of a shared process, to formalize that possible relationship, and to test it without erasing domain-specific distinctions.</p>
+</section>
+
+<section id="architecture">
+  <div class="kicker">Tiered translation</div>
+  <h2>2. Six tiers: from human observation to formal research</h2>
+  <p>One observation may need several translations. Each translation must remain traceable to the source and must not silently replace the original wording with a diagnosis, mechanism, or theoretical interpretation.</p>
+  <div class="grid-2">
+    <div class="tile"><span class="tag">Tier 0</span><h3>Territory observation</h3><p>Preserve the original person's words, events, measurements, context, timing, and circumstances before interpretive compression. Record the observer, instrument, setting, and source.</p></div>
+    <div class="tile"><span class="tag">Tier 1</span><h3>General understanding</h3><p>Translate into clear everyday language for patients, families, public readers, and people outside the specialty. Simplify language, not the underlying uncertainty.</p></div>
+    <div class="tile"><span class="tag">Tier 2</span><h3>Clinical translation</h3><p>Organize symptoms, signs, history, function, context, safety concerns, examination findings, and current clinical classifications. Diagnosis is a clinical classification; it is not automatically a complete causal explanation.</p></div>
+    <div class="tile"><span class="tag">Tier 3</span><h3>Interdisciplinary translation</h3><p>Map candidate mechanisms across relevant specialties. State which relationships are established, which are plausible, which are disputed, and which remain unmeasured.</p></div>
+    <div class="tile"><span class="tag">Tier 4</span><h3>Academic and research translation</h3><p>Define constructs, variables, units, populations, inclusion criteria, controls, instruments, assumptions, predicted outcomes, alternative explanations, and falsifiers.</p></div>
+    <div class="tile"><span class="tag">Tier 5</span><h3>Formal invariant and program translation</h3><p>Where evidence warrants, formalize a stable relationship, update a research program, or propose a clinical pathway. No candidate invariant becomes a clinical rule merely because it is coherent or compresses observations.</p></div>
+  </div>
+  <div class="callout warning"><strong>Translation rule:</strong> Every tier must retain a route back to the original observation. A patient-friendly explanation, clinical formulation, academic variable, and formal model are different maps of the same recorded event; they are not interchangeable source records.</div>
+  <h3>Translation matrix</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Layer</th><th>Question</th><th>Example wording</th><th>What must be preserved</th></tr></thead>
+    <tbody>
+      <tr><td>Original account</td><td>What did the person experience?</td><td>“The room seemed to move when I turned my head.”</td><td>Exact wording, timing, context, first-person meaning.</td></tr>
+      <tr><td>General reader</td><td>What does this mean in ordinary language?</td><td>“The person experiences a movement sensation during head movement.”</td><td>That this is a report, not yet a diagnosis or cause.</td></tr>
+      <tr><td>Clinical</td><td>How is the presentation characterized?</td><td>Document onset, triggers, duration, associated symptoms, examination, and differential diagnosis.</td><td>Clinical criteria, red flags, uncertainties, safety.</td></tr>
+      <tr><td>Interdisciplinary</td><td>Which systems could be relevant?</td><td>Vestibular, visual, proprioceptive, autonomic, medication, cardiovascular, and other relevant domains.</td><td>Domain-specific definitions and competing mechanisms.</td></tr>
+      <tr><td>Research</td><td>What can be measured and compared?</td><td>Head-motion condition, eye movement, postural response, symptom time course, physiological signals.</td><td>Operational definitions, calibration, units, temporal resolution.</td></tr>
+      <tr><td>Formal</td><td>What stable relationship survives testing?</td><td>A candidate relationship between a specified stimulus and a reproducible multi-system response.</td><td>Scope, uncertainty, boundary conditions, independent replication.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="target">
+  <div class="kicker">Mandatory clinical and academic decision gate</div>
+  <h2>3. What is being addressed: manifestation, mechanism, cause, or candidate invariant?</h2>
+  <p>At clinical and academic research tiers, every treatment plan, study, and substantive conclusion must explicitly state the level it is addressing. The central question is:</p>
+  <div class="callout"><p class="big-rule">Am I treating the emergence, or am I identifying and addressing the process that produces or maintains it?</p></div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Target level</th><th>Definition</th><th>Required declaration</th><th>Common error to avoid</th></tr></thead>
+    <tbody>
+      <tr><td><strong>L1 — Manifestation-directed</strong></td><td>Addresses a symptom, sign, functional limitation, or immediate consequence.</td><td>What manifestation is being relieved, measured, or prevented?</td><td>Presenting symptom relief as proof that the cause has been removed.</td></tr>
+      <tr><td><strong>L2 — Mechanism-directed</strong></td><td>Addresses a physiological, neurological, psychological, behavioral, or other process associated with the condition.</td><td>How was the mechanism identified, and how directly is it measured?</td><td>Calling an associated mechanism the root cause without causal support.</td></tr>
+      <tr><td><strong>L3 — Cause-directed</strong></td><td>Addresses a factor or process supported as causally contributing to the condition in the specified context.</td><td>What evidence supports causation, and what alternatives remain?</td><td>Confusing correlation, temporal sequence, or plausibility with causation.</td></tr>
+      <tr><td><strong>L4 — Candidate-invariant research</strong></td><td>Tests whether a defined relationship, constraint, or pattern remains stable across relevant observations, conditions, or populations.</td><td>What is the invariant claim, its domain, boundaries, predicted surplus, and falsifier?</td><td>Calling a proposed invariant established or treating it as a proven cause before testing.</td></tr>
+      <tr><td><strong>L5 — Multilevel</strong></td><td>Explicitly addresses more than one level, such as symptom relief plus mechanism modification.</td><td>Which outcomes belong to each level, and how will they be analyzed separately?</td><td>Combining distinct endpoints into one undifferentiated success measure.</td></tr>
+    </tbody>
+  </table></div>
+  <p><strong>Important distinction:</strong> an invariant need not itself be a cause. It may describe a stable structural relation, constraint, mechanism, or predictive relationship. A claim of causality requires an appropriate causal design and evidence. A candidate invariant may be useful even when its causal role remains open.</p>
+  <div class="callout success"><strong>Clinical safeguard:</strong> Symptom treatment is not a methodological failure. Relief, stabilization, and safety may be necessary even while the cause is unknown. The error is misrepresenting the level of the intervention or delaying appropriate care in pursuit of an unvalidated fundamental explanation.</div>
+  <h3>Required decision-gate questions</h3>
+  <ol>
+    <li>What is manifesting, and how is it documented?</li>
+    <li>What mechanism is suspected or measured?</li>
+    <li>What evidence supports a causal claim, if one is made?</li>
+    <li>Is there a candidate invariant that accounts for more than the original observation?</li>
+    <li>What other causes, mechanisms, or interacting factors remain possible?</li>
+    <li>What would falsify or materially weaken the proposed explanation?</li>
+    <li>Does the treatment or study target match the conclusion being reported?</li>
+  </ol>
+  <p>Every clinical or research record should carry a target-level field such as <code>L1</code>, <code>L2</code>, <code>L3</code>, <code>L4</code>, or <code>L5</code>, with evidence status and limitations. The code describes the target, not the quality or certainty of the evidence.</p>
+</section>
+
+<section id="observation">
+  <div class="kicker">M-D22 · Second-order observation</div>
+  <h2>4. Every record contains O₁ and O₂</h2>
+  <p>The method requires two observations to be recorded together. The second does not replace the first; it makes the first more inspectable and correctable.</p>
+  <div class="grid-2">
+    <div class="tile"><span class="tag">O₁ · First-order</span><h3>Observation of the territory</h3><p>What was experienced, observed, measured, or recorded? Include the original account, instrument output, clinical finding, and relevant context.</p></div>
+    <div class="tile"><span class="tag gold">O₂ · Second-order</span><h3>Observation of the observation process</h3><p>How did the observer select, measure, label, interpret, transform, or reconstruct the observation? Which assumptions or prior classifications shaped the account?</p></div>
+  </div>
+  <p><strong>Record completeness:</strong> <code>R(O) = (O₁, O₂)</code></p>
+  <p>O₁ is an observation of the territory; it is not the territory itself. O₂ records the observer–territory relationship, including instruments, protocols, assumptions, labels, and transformations. The method uses one explicit second-order review of the claim and its observation process; it does not require an endless regress of observers observing observers.</p>
+  <h3>O₂ pause questions</h3>
+  <ol>
+    <li>What did I just observe or measure?</li>
+    <li>What instrument, protocol, or prior assumption shaped the observation?</li>
+    <li>What label or interpretation did I attach?</li>
+    <li>Is this a direct measurement, an indirect proxy, or a reconstruction?</li>
+    <li>What result would show that my interpretation is wrong?</li>
+  </ol>
+  <div class="callout warning"><strong>Placeholder Error:</strong> a reconstruction, label, proxy, or model is substituted for the underlying process it is meant to represent. For example, a volume measurement is not a density measurement; a symptom label is not its cause; a heart-rate variability value is not a direct recording of vagal nerve traffic.</div>
+  <p>Within this architecture, the reverse-connotation procedure asks the researcher to move backward from a label or result toward the underlying observation, transformation, assumptions, and territory it represents. Every reverse mapping must preserve source coordinates and uncertainty.</p>
+</section>
+
+<section id="scope">
+  <div class="kicker">Mandatory scope examination</div>
+  <h2>5. The Scope Challenge: is the assigned territory too narrow?</h2>
+  <p>At the start of a clinical or academic investigation, the study defines a contained territory. Before accepting the study's conclusions as an explanation of the wider phenomenon, reviewers must examine the scope itself.</p>
+  <div class="callout"><p class="big-rule">Is this boundary required to make the experiment valid, or does it prevent examination of a relevant relationship that may exist beyond the assigned discipline?</p></div>
+  <p>The scope audit does not automatically expand every study. It determines whether an excluded domain is relevant enough to warrant a secondary analysis, a linked protocol, a specialist review, or a separate experiment.</p>
+  <h3>Scope Challenge Record (SCR)</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Field</th><th>Required entry</th></tr></thead>
+    <tbody>
+      <tr><td>SCR-01 · Assigned territory</td><td>Condition, population, discipline, biological systems, environment, scale, and stated research question.</td></tr>
+      <tr><td>SCR-02 · Included observations</td><td>What was actually measured or collected, by whom, when, and under which conditions?</td></tr>
+      <tr><td>SCR-03 · Excluded territory</td><td>Which systems, measurements, populations, time windows, or specialist domains were not included?</td></tr>
+      <tr><td>SCR-04 · Exclusion reason</td><td>Experimental control, irrelevance to the defined question, unavailable methods, cost, access, expertise, publication scope, or an assumption that has not been tested.</td></tr>
+      <tr><td>SCR-05 · Relevance rationale</td><td>What observation, established connection, prior finding, or coherent hypothesis makes the excluded domain relevant?</td></tr>
+      <tr><td>SCR-06 · Cross-domain reviewers</td><td>Which disciplines should review the proposed connection, and what is each reviewer qualified to assess?</td></tr>
+      <tr><td>SCR-07 · Additional test</td><td>What new measurement, control, comparison, or study would test the relationship?</td></tr>
+      <tr><td>SCR-08 · Scope decision</td><td>Retain current scope; add a prespecified measure; initiate exploratory work; create a separate protocol; or record as an open question.</td></tr>
+      <tr><td>SCR-09 · Consequence for findings</td><td>Which conclusions are valid inside the study's scope, and which wider explanations remain untested?</td></tr>
+    </tbody>
+  </table></div>
+  <p>A study may legitimately exclude a domain. The requirement is to state why, assess whether the exclusion affects interpretation, and avoid presenting a local result as a complete account of the larger territory.</p>
+</section>
+
+<section id="firewalls">
+  <div class="kicker">Boundary analysis</div>
+  <h2>6. What is the firewall?</h2>
+  <p>A firewall is a boundary that blocks a relevant observation, measurement, interpretation, or dataset from being examined in relation to another domain. A firewall can be necessary, accidental, institutional, or conceptual. The review must identify which kind is present rather than treating every boundary as an error.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Firewall type</th><th>What it separates</th><th>Potential loss</th><th>Review response</th></tr></thead>
+    <tbody>
+      <tr><td>Disciplinary</td><td>Neurology, vestibular science, gastroenterology, psychiatry, cardiology, and other specialties.</td><td>Related systems may be studied separately without a shared hypothesis or common measurements.</td><td>Invite relevant domain reviewers and specify the proposed connection.</td></tr>
+      <tr><td>Terminological</td><td>Different labels for observations that may overlap, or identical labels used for different constructs.</td><td>False disagreement or false equivalence.</td><td>Compare operational definitions, not words alone.</td></tr>
+      <tr><td>Measurement</td><td>Different instruments, units, sampling rates, scales, and time windows.</td><td>Signals may appear incomparable or falsely aligned.</td><td>Preserve metadata, units, calibration, synchronization, and uncertainty.</td></tr>
+      <tr><td>Scope</td><td>What a particular study was designed to include.</td><td>Relevant variables outside the initial protocol remain unseen.</td><td>Complete the Scope Challenge Record.</td></tr>
+      <tr><td>Evidence-status</td><td>Established findings, associations, hypotheses, and interpretations.</td><td>Speculation can be presented as established evidence, or emerging evidence can be dismissed prematurely.</td><td>Use explicit evidence-status labels and separate claim types.</td></tr>
+      <tr><td>Data access</td><td>Patient records, institutional systems, research repositories, and specialty datasets.</td><td>Relevant comparisons cannot be made or privacy is put at risk.</td><td>Use consent, authorization, data minimization, de-identification, and controlled access.</td></tr>
+      <tr><td>Publication and incentives</td><td>Journal scope, funding priorities, departmental ownership, and established research categories.</td><td>Cross-domain questions may not receive review or resources.</td><td>Document the limitation and create a transparent route for cross-domain assessment.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout success"><strong>Design principle:</strong> do not abolish boundaries that protect experimental validity, specialist competence, safety, or privacy. Make boundaries visible, reviewable, and permeable when a justified scientific connection needs examination.</div>
+</section>
+
+<section id="peer-review">
+  <div class="kicker">Shared cross-disciplinary review</div>
+  <h2>7. Cross-domain peer review: retain specialist rigor and review the connections</h2>
+  <p>Cross-domain review is not a demand that every specialist become an expert in every other domain. Each specialist reviews the validity of the work within their competence. A shared review examines whether the interfaces between domains are well defined and testable.</p>
+  <div class="grid-2">
+    <div class="tile"><h3>Within-domain review</h3><p>Are the methods, instruments, diagnoses, measurements, analyses, and interpretations valid within the assigned specialty?</p></div>
+    <div class="tile"><h3>Scope review</h3><p>Does the selected scope exclude a relevant system, population, time scale, or competing explanation?</p></div>
+    <div class="tile"><h3>Interface review</h3><p>Are the proposed connections between domains biologically and conceptually coherent? Are the constructs and measurements actually compatible?</p></div>
+    <div class="tile"><h3>Integration review</h3><p>Do the combined results support the proposed relationship, or do they show only parallel changes, association, or unresolved ambiguity?</p></div>
+  </div>
+  <h3>Reviewer responsibilities</h3>
+  <ol>
+    <li><strong>Primary-domain reviewer:</strong> evaluates the integrity of the core protocol in its principal field.</li>
+    <li><strong>Adjacent-domain reviewer:</strong> evaluates the accuracy of the proposed connection to another discipline.</li>
+    <li><strong>Methods/statistics reviewer:</strong> evaluates measurement compatibility, design, power, multiplicity, missing data, and analysis.</li>
+    <li><strong>Clinical and participant-safety reviewer:</strong> evaluates foreseeable risks, clinical relevance, and safeguards where human participants are involved.</li>
+    <li><strong>Independent synthesis reviewer:</strong> checks whether the conclusions remain within the evidence actually produced.</li>
+  </ol>
+  <p>One person may hold more than one role when qualified, but no reviewer should be represented as certifying a domain outside their competence. Disagreements should be recorded with their reasons rather than collapsed into a forced consensus.</p>
+  <h3>Shared review outcome</h3>
+  <ul class="checklist">
+    <li>Core findings valid within the stated scope.</li>
+    <li>Scope limitations and exclusions adequately declared.</li>
+    <li>Cross-domain connection supported, plausible but untested, unsupported, or contradicted.</li>
+    <li>Measurements and time bases sufficiently compatible for the proposed comparison.</li>
+    <li>Further research required before clinical or causal conclusions.</li>
+    <li>Findings returned in accessible form to the originating observers and relevant clinical/research audiences.</li>
+  </ul>
+</section>
+
+<section id="case">
+  <div class="kicker">Illustrative cross-domain case</div>
+  <h2>8. Vertigo, vestibular and cortical processing, autonomic response, and the ENS</h2>
+  <p>This case demonstrates how the architecture can connect territories without assuming that all symptoms share one cause.</p>
+  <h3>Why the cross-domain question is legitimate</h3>
+  <p>Balance and spatial orientation involve visual, vestibular, and somatosensory/proprioceptive information. A laboratory study of virtual height exposure in adults reported changes in distress, heart rate, electrodermal activity, and postural movement during the task. This is evidence that a controlled height-related visual context can coincide with measurable autonomic and postural responses in that study population; it does not establish a gut mechanism or a universal explanation of vertigo. <a href="https://pubmed.ncbi.nlm.nih.gov/35095450/" target="_blank" rel="noopener">Read the virtual-height study</a>.</p>
+  <p>The gastrointestinal tract contains enteric neural circuits, and vagovagal pathways connect gastrointestinal functions with brainstem networks, including the dorsal vagal complex and nucleus of the solitary tract. This is an established area of brain–gut physiology. It makes the gut–brain axis a reasonable adjacent domain to consider when designing a broader autonomic research question; it does not establish that ENS activity causes vertigo. <a href="https://pubmed.ncbi.nlm.nih.gov/34643086/" target="_blank" rel="noopener">Read the brain–gut communication review</a>.</p>
+  <p>Studies involving people with congenital blindness have reported adaptations and differences in postural control, but findings depend on the population, methods, and outcome measures. A study of postural control and early visual experience reported that early visual input can affect later balance and locomotor calibration. Another study of adults with congenital total blindness reported specific postural-response findings that did not support a simplistic assumption that the absence of vision necessarily impairs all automatic balance responses. These findings argue for careful group definition, not for assuming a single universal blind-person profile. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11373724/" target="_blank" rel="noopener">Early visual experience and postural control</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/11378423/" target="_blank" rel="noopener">Automatic postural responses in congenital blindness</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/20853264/" target="_blank" rel="noopener">Postural control in visual impairment</a>.</p>
+  <div class="callout warning"><strong>Boundary between evidence and hypothesis:</strong> vestibular–visual–proprioceptive integration and brain–gut/vagal communication are established research areas. The specific hypothesis that vestibular challenges produce a measurable, reproducible ENS response with a defined temporal relationship is not established by these facts alone. It must be tested directly.</div>
+  <h3>Questions the wider study can ask</h3>
+  <ul>
+    <li>How do controlled changes in visual, vestibular, and proprioceptive information affect postural responses?</li>
+    <li>Do those challenges coincide with measurable autonomic changes?</li>
+    <li>Do validated gastrointestinal physiological measurements change in a time-locked way under specified conditions?</li>
+    <li>Are the responses different across sighted, congenitally blind, and acquired-blindness groups after relevant differences are characterized?</li>
+    <li>Do observed relationships persist after accounting for age, medication, vestibular diagnosis, gastrointestinal condition, anxiety, fitness, movement, respiration, and other confounds?</li>
+    <li>Do the data support association, temporal ordering, a mechanism, or a causal relationship—or do they fail to support the proposed connection?</li>
+  </ul>
+</section>
+
+<section id="protocol">
+  <div class="kicker">Illustrative research program</div>
+  <h2>9. A staged test program rather than one overloaded experiment</h2>
+  <p>The research should be organized into linked studies with distinct populations and sensory conditions. A participant who is blind from birth cannot be given the same visual-height stimulus as a sighted participant. The comparison must preserve that difference instead of pretending the stimulus is equivalent.</p>
+  <div class="tile">
+    <span class="tag green">Study A · Initial adult protocol</span>
+    <h3>Controlled visual-height context in sighted adults</h3>
+    <p><strong>Purpose:</strong> replicate or extend controlled height-related visual exposure research while adding prespecified, appropriately validated measures relevant to gastrointestinal physiology.</p>
+    <p><strong>Setting:</strong> laboratory floor-level virtual environment, stable safety equipment, baseline, task, and recovery periods. Do not place participants on an unprotected elevated platform.</p>
+    <p><strong>Candidate measures:</strong> postural sway/force plate, head and body movement, eye movements where relevant, symptom ratings, ECG, respiration, electrodermal activity, and a justified gastrointestinal measurement such as electrogastrography or a validated motility measure.</p>
+    <p><strong>Primary question:</strong> do prespecified gastrointestinal signals change reproducibly in relation to the controlled stimulus and the participant's postural/autonomic response?</p>
+  </div>
+  <div class="tile">
+    <span class="tag gold">Study B · Separate adult protocol</span>
+    <h3>Nonvisual sensory integration in adults blind from birth</h3>
+    <p><strong>Purpose:</strong> characterize how people without a history of visual experience respond to controlled nonvisual balance and spatial-orientation tasks.</p>
+    <p><strong>Setting:</strong> safe ground-level laboratory tasks using controlled vestibular, proprioceptive, tactile, and auditory cues. The study should not use a visual-height illusion as though it were equivalent for this group.</p>
+    <p><strong>Candidate measures:</strong> postural response, head/body movement, appropriate vestibular tests, autonomic measures, symptom and spatial-orientation reports, and gastrointestinal measurements only where justified and tolerable.</p>
+    <p><strong>Primary question:</strong> what response patterns are associated with nonvisual sensory conditions, and are any gastrointestinal/autonomic associations reproducible?</p>
+  </div>
+  <div class="tile">
+    <span class="tag red">Study C · Later developmental extension</span>
+    <h3>Children with congenital blindness</h3>
+    <p><strong>Purpose:</strong> investigate developmental patterns only after adult work, feasibility, measurement validity, and a clear scientific rationale have been established.</p>
+    <p><strong>Requirements:</strong> a separate pediatric protocol, independent ethics review, age-appropriate methods, parental permission where required, child assent when the child is capable, accessible communication, and procedures proportionate to risk. Children should not be exposed to a hazardous height or unnecessary provocative testing.</p>
+    <p><strong>Primary question:</strong> which developmental sensory-integration patterns can be measured safely and reliably, and how do they compare with appropriately matched adult and developmental groups?</p>
+  </div>
+  <h3>Population definition is part of the territory</h3>
+  <p>“Blind from birth” must not be treated as a homogeneous biological category. The protocol should record etiology where known, residual light perception, other sensory or neurological conditions, age, developmental history, medication, vestibular status, and relevant gastrointestinal conditions. Acquired blindness should be analyzed separately rather than merged automatically with congenital blindness.</p>
+  <h3>Comparison design</h3>
+  <p>Comparisons should be defined around the scientific question, not around a presumed hierarchy of sensory ability. Possible groups include sighted adults, adults with congenital blindness, and adults with acquired blindness. Matching and adjustment should consider age, sex where relevant, health status, vestibular function, mobility, and other prespecified factors. A study should not assume that blindness produces superior awareness, superior O₂, or a universal alternative perception of reality.</p>
+  <div class="callout caution"><strong>Ethical boundary:</strong> the proposal to include children is a possible later research direction, not authorization to run a study. Pediatric involvement requires independent review of scientific necessity, risks, benefits, parental permission, and the child's assent as applicable. See the <a href="https://www.hhs.gov/ohrp/regulations-and-policy/guidance/faq/children-research/index.html" target="_blank" rel="noopener">HHS Office for Human Research Protections guidance</a> and <a href="https://irbo.nih.gov/informed-consent/assent/" target="_blank" rel="noopener">NIH assent guidance</a>.</div>
+</section>
+
+<section id="latency">
+  <div class="kicker">Measurement discipline</div>
+  <h2>10. Latency: measure synchronized responses without overstating what they mean</h2>
+  <p>Latency is a useful dimension for the proposed cross-domain program, but each signal must be defined according to what the instrument actually records. The study should distinguish stimulus onset, signal onset, peak response, recovery, and the uncertainty of each timestamp.</p>
+  <h3>Potential synchronized measurements</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Domain</th><th>Potential measurement</th><th>What it may support</th><th>What it does not establish by itself</th></tr></thead>
+    <tbody>
+      <tr><td>Vestibular / postural</td><td>Force plate, motion capture or inertial sensors, validated vestibular tests, eye movement measures where appropriate.</td><td>Postural response, movement timing, vestibular function under defined conditions.</td><td>A specific ENS signal or a single central cause.</td></tr>
+      <tr><td>Cortical / central</td><td>EEG or another justified neurophysiological measure, if the question and acquisition quality warrant it.</td><td>Time-locked cortical activity under defined tasks.</td><td>Direct measurement of all central processing or of vagal traffic.</td></tr>
+      <tr><td>Autonomic / cardiovascular</td><td>ECG, respiration, electrodermal activity, blood pressure where appropriate.</td><td>Cardiac and autonomic-associated responses, interpreted within method limits.</td><td>Direct measurement of ENS function or direct vagal afferent conduction.</td></tr>
+      <tr><td>Gastrointestinal</td><td>Electrogastrography, validated motility assessment, or another justified GI endpoint.</td><td>Selected aspects of gastric electrical or motor activity.</td><td>Direct recording of all enteric activity or proof that a vagal pathway caused the measured change.</td></tr>
+      <tr><td>Experience / function</td><td>Time-stamped symptom report, orientation task, validated scale, task performance.</td><td>Participant experience and functional outcome under a specified protocol.</td><td>A biological mechanism without additional evidence.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout warning"><strong>Proxy warning:</strong> heart-rate variability is not a direct recording of vagal nerve activity, ENS activity, or vagal afferent conduction. A 2026 methodological guideline emphasizes that HRV should not be used as a specific marker of cardiac sympathetic outflow or “sympathovagal balance,” and cautions against overinterpretation. <a href="https://pubmed.ncbi.nlm.nih.gov/42495990/" target="_blank" rel="noopener">Read the 2026 HRV rigor and reproducibility guideline</a>.</div>
+  <h3>Minimum timing and analysis requirements</h3>
+  <ul>
+    <li>Use a shared clock or validated synchronization procedure across devices; record synchronization error.</li>
+    <li>Record the exact stimulus event and define each signal's onset, peak, window, and recovery rule before analysis.</li>
+    <li>Report sampling rate, filtering, artifacts, missing intervals, device delay, and processing steps.</li>
+    <li>Prespecify primary signals, latency outcomes, expected direction, analysis windows, and correction for multiple comparisons.</li>
+    <li>Distinguish within-person response timing from between-person average differences.</li>
+    <li>Use cross-correlation or other temporal analyses as measures of correspondence, not as proof of causal direction.</li>
+    <li>State clearly when a desired signal cannot be measured noninvasively with adequate validity.</li>
+  </ul>
+  <p>A relationship between two synchronized measurements can justify further investigation. To claim a specific neural pathway or causal sequence, the design needs evidence capable of distinguishing that explanation from common input, feedback, confounding, and measurement artifacts.</p>
+</section>
+
+<section id="registry">
+  <div class="kicker">Shared connection layer</div>
+  <h2>11. The Invariant and Observation Registry</h2>
+  <p>The registry is the connection layer between patient/observer records, clinical records, specialist studies, and academic research. It allows different maps to be compared without merging their distinct definitions or losing the original data.</p>
+  <h3>Minimum record structure</h3>
+  <pre>record_id:
+source_observation_id:
+record_version:
+consent_and_access_status:
+
+territory:
+  domain:
+  population:
+  condition_or_question:
+  biological_systems:
+  spatial_scale:
+  temporal_window:
+  setting:
+
+O1_first_order_observation:
+  original_words_or_raw_measurement:
+  date_time:
+  observer_or_instrument:
+  protocol:
+  units:
+  calibration:
+  uncertainty:
+
+O2_second_order_observation:
+  assumptions:
+  labels_or_classifications:
+  transformations:
+  proxy_or_direct_measurement:
+  observer_position:
+  potential_biases:
+
+translation:
+  tier_1_plain_language:
+  tier_2_clinical:
+  tier_3_interdisciplinary:
+  tier_4_research:
+  tier_5_formal:
+
+claim:
+  target_level: L1 | L2 | L3 | L4 | L5
+  claim_type: observation | association | mechanism | causal | candidate_invariant | interpretation
+  evidence_status:
+  candidate_relationship:
+  alternative_explanations:
+  boundary_conditions:
+  falsifier_or_weakening_result:
+
+scope_challenge:
+  included_domains:
+  excluded_domains:
+  exclusion_reasons:
+  cross_domain_reviewers:
+  review_decision:
+
+study_linkage:
+  protocol_id:
+  measures:
+  analysis_plan:
+  outcome:
+  replication_status:</pre>
+  <h3>What makes a candidate invariant reviewable?</h3>
+  <ul>
+    <li>It has a precise statement and defined domain.</li>
+    <li>Its variables and relationships are operationally defined.</li>
+    <li>Its boundary conditions and tolerances are stated.</li>
+    <li>It explains or predicts observations not used merely to construct it.</li>
+    <li>It distinguishes itself from competing explanations.</li>
+    <li>It has a result that would weaken or falsify it.</li>
+    <li>It survives an independent test or is explicitly retained as open.</li>
+  </ul>
+  <p>Do not force unrelated observations into one invariant. The registry must permit multiple, nested, interacting, or domain-specific relationships. A failed connection is a useful result and should remain in the record.</p>
+</section>
+
+<section id="disclosure">
+  <div class="kicker">Transparency with participant protection</div>
+  <h2>12. Data disclosure and audience access</h2>
+  <p>Data disclosure should make evidence inspectable without exposing identifiable or sensitive information unnecessarily. Access is determined by consent, law, ethics approval, data agreements, and the minimum information required for the intended review.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Audience</th><th>Appropriate information</th><th>Controls</th></tr></thead>
+    <tbody>
+      <tr><td>Participant / patient</td><td>Their own observations, results, plain-language explanations, limitations, and relevant clinical communication.</td><td>Identity verification, accessible format, clinical context, correction route.</td></tr>
+      <tr><td>Caregiver / family</td><td>Information the participant has authorized or that is otherwise lawfully shareable.</td><td>Permission, applicable privacy law, safeguarding rules.</td></tr>
+      <tr><td>General public</td><td>De-identified summaries, methods, aggregate findings, and clearly labeled uncertainty.</td><td>Disclosure review and protection against re-identification.</td></tr>
+      <tr><td>Treating clinician</td><td>Relevant clinical history, findings, safety information, and authorized research results.</td><td>Role-based access and clinical relevance.</td></tr>
+      <tr><td>Interdisciplinary research team</td><td>Minimum necessary linked observations and measurements for the approved protocol.</td><td>Data-use agreements, permissions, audit trail, secure environment.</td></tr>
+      <tr><td>Academic reviewers</td><td>Protocol, analysis plan, de-identified data or controlled access where authorized, codebooks, and measurement metadata.</td><td>Ethics approval, consent terms, controlled access when needed.</td></tr>
+      <tr><td>Public archive</td><td>Non-identifiable data, methods, metadata, and derived outputs suitable for open release.</td><td>Consent compatibility, privacy review, repository terms, versioning.</td></tr>
+    </tbody>
+  </table></div>
+  <p>Each translation should identify what was removed, generalized, or withheld and why. A dataset should not be called open merely because a summary is public. The registry should record data provenance, consent status, access history, and the version of the data used in each analysis.</p>
+</section>
+
+<section id="implementation">
+  <div class="kicker">Operational sequence</div>
+  <h2>13. How the architecture changes clinical studies and programs</h2>
+  <div class="flow" aria-label="Implementation sequence">
+    <div><b>1. Capture</b><span class="arrow">Observation record</span></div>
+    <div><b>2. Translate</b><span class="arrow">Tier mapping</span></div>
+    <div><b>3. Classify</b><span class="arrow">Target level</span></div>
+    <div><b>4. Challenge</b><span class="arrow">Scope and firewall</span></div>
+    <div><b>5. Review</b><span class="arrow">Test and revise</span></div>
+  </div>
+  <ol>
+    <li><strong>Preserve the source.</strong> Capture the original observation and relevant clinical data before translating into a formal category.</li>
+    <li><strong>Complete O₂.</strong> Record how the observation was made, what assumptions were applied, and whether measurements are direct or proxy-based.</li>
+    <li><strong>Translate across tiers.</strong> Create general, clinical, interdisciplinary, and research representations while retaining source traceability.</li>
+    <li><strong>Declare the target level.</strong> State whether the treatment or study addresses manifestation, mechanism, cause, candidate invariant, or multiple levels.</li>
+    <li><strong>Complete the Scope Challenge Record.</strong> List included and excluded domains and justify each consequential exclusion.</li>
+    <li><strong>Conduct cross-domain review.</strong> Bring in relevant specialists where the proposed relationship crosses a disciplinary boundary.</li>
+    <li><strong>Formalize and preregister the test.</strong> Define measures, endpoints, comparisons, analysis, confounds, and falsifiers before outcome review.</li>
+    <li><strong>Run the study within ethical and safety boundaries.</strong> Maintain established clinical care and participant protections.</li>
+    <li><strong>Classify findings.</strong> Separate observations, associations, mechanisms, causal claims, candidate invariants, and interpretations.</li>
+    <li><strong>Return the result to all tiers.</strong> Update the participant-facing explanation, clinical translation, specialist map, academic record, and registry.</li>
+  </ol>
+  <h3>Implications for treatment programs</h3>
+  <p>A program should state which endpoints represent symptom relief, functional improvement, mechanism change, cause-directed effect, and any hypothesized invariant. These should be reported separately. A treatment may be successful at relieving a symptom without resolving the cause; that distinction is clinically important rather than dismissive.</p>
+  <p>Any proposed change to a treatment pathway requires relevant clinical evidence, professional oversight, informed consent, applicable regulatory review, and safety monitoring. This architecture can improve the questions asked and the way evidence is connected; it does not itself authorize a new treatment.</p>
+</section>
+
+<section id="validation">
+  <div class="kicker">Evidence control and self-correction</div>
+  <h2>14. Evidence status, falsification, and closure</h2>
+  <p>Every statement must be assigned a status appropriate to the evidence. Do not use the confidence of the author, the elegance of a map, or agreement among reviewers as a substitute for independent evidence.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Status</th><th>Meaning</th><th>Permitted language</th></tr></thead>
+    <tbody>
+      <tr><td><span class="status established">Observed</span></td><td>Recorded under a specified method and condition.</td><td>“Was observed/measured in this sample under these conditions.”</td></tr>
+      <tr><td><span class="status established">Replicated observation</span></td><td>Repeated with sufficiently comparable methods or samples.</td><td>“The observation was replicated in the stated contexts.”</td></tr>
+      <tr><td><span class="status hypothesis">Associated</span></td><td>Two variables vary together under the analyzed design.</td><td>“Was associated with”; not “caused by.”</td></tr>
+      <tr><td><span class="status hypothesis">Mechanism candidate</span></td><td>A proposed process is consistent with available evidence but remains under test.</td><td>“May involve”; “is consistent with.”</td></tr>
+      <tr><td><span class="status hypothesis">Causal support</span></td><td>An appropriate design supports a causal contribution within a stated domain.</td><td>State the causal design, scope, assumptions, and remaining limitations.</td></tr>
+      <tr><td><span class="status hypothesis">Candidate invariant</span></td><td>A defined relationship is proposed to remain stable across specified conditions and has a test plan.</td><td>“Candidate invariant”; do not imply universal validation.</td></tr>
+      <tr><td><span class="status established">Independently validated</span></td><td>Independent evaluation supports the defined claim within its tested boundaries.</td><td>State the exact population, domain, and conditions of validation.</td></tr>
+      <tr><td><span class="status open">Open / unsupported</span></td><td>Evidence is insufficient, conflicting, unavailable, or does not support the claim.</td><td>“Unresolved,” “not established,” or “not supported by this study.”</td></tr>
+      <tr><td><span class="status open">Falsified / withdrawn</span></td><td>A specified test contradicts the claim or the claim is withdrawn after review.</td><td>Describe the failed prediction and preserve the record.</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Required closure questions</h3>
+  <ul class="checklist">
+    <li>Did the study answer its prespecified question?</li>
+    <li>Did the evidence support the target-level claim?</li>
+    <li>Were the key measures valid for the construct they were used to represent?</li>
+    <li>Were alternative explanations evaluated?</li>
+    <li>Did the scope audit identify consequential exclusions?</li>
+    <li>Were cross-domain claims independently reviewed by qualified specialists?</li>
+    <li>Were null, negative, and contradictory results preserved?</li>
+    <li>Can another team reproduce the analysis from the documented protocol and data access pathway?</li>
+  </ul>
+  <p>A null result is not automatically proof that no relationship exists. Its meaning depends on measurement sensitivity, sample size, study design, uncertainty, and the predictions specified in advance. Equally, an absence of evidence must not be converted into evidence for a preferred explanation.</p>
+</section>
+
+<section id="principle">
+  <div class="kicker">Canonical methodological statement</div>
+  <h2>15. Governing statement</h2>
+  <div class="callout">
+    <p class="big-rule">No assigned research scope may be treated as the limit of the territory itself.</p>
+    <p>Every clinical treatment program and academic study must identify whether it addresses the manifestation, a mechanism, a causally supported process, a candidate fundamental invariant, or multiple levels. It must preserve the original observation and document how that observation was produced and interpreted. It must define its experimental scope, disclose relevant exclusions, and examine whether disciplinary, terminological, methodological, institutional, publication, or data-access boundaries have prevented a justified relationship from being tested.</p>
+    <p>Peer review must evaluate both the integrity of the work within its declared scope and the adequacy of its connections to the wider territory. Cross-domain connections must be examined by qualified reviewers and tested with operational definitions, compatible measurements, explicit alternatives, and falsifiable predictions. Findings remain limited to the evidence, population, methods, and resolution of the investigation. What remains outside the evidence remains open—not silently excluded from reality and not promoted to fact by interpretation.</p>
+  </div>
+  <p><strong>Operational summary:</strong> Observe the territory. Observe how it was observed. Translate without losing the source. Identify what level is being treated or studied. Audit the scope. Examine the firewall. Connect relevant maps. Test the relationship. Preserve what survives and withdraw what fails.</p>
+</section>
+
+<section id="references">
+  <div class="kicker">Selected external references</div>
+  <h2>References and evidence boundaries</h2>
+  <p>The references below support limited background statements in this document. They do not validate the proposed Macachor architecture, prove an ENS–vertigo causal relationship, or authorize a clinical intervention. The research architecture and its test proposals remain proposals requiring independent evaluation.</p>
+  <ol class="source-list">
+    <li><a href="https://pubmed.ncbi.nlm.nih.gov/34643086/" target="_blank" rel="noopener">Powley, T. L. (2021). Brain-gut communication: vagovagal reflexes interconnect the two “brains.”</a> Review of enteric circuits, vagovagal reflexes, and brainstem integration.</li>
+    <li><a href="https://pubmed.ncbi.nlm.nih.gov/35095450/" target="_blank" rel="noopener">The Effects of Virtual Height Exposure on Postural Control and Psychophysiological Stress Are Moderated by Individual Height Intolerance (2022).</a> Adult laboratory study of virtual height exposure, postural measures, and psychophysiological responses.</li>
+    <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11373724/" target="_blank" rel="noopener">Postural control depends on early visual experience (2024).</a> Study of early visual experience and later postural-control outcomes.</li>
+    <li><a href="https://pubmed.ncbi.nlm.nih.gov/11378423/" target="_blank" rel="noopener">Automatic postural response systems in individuals with congenital total blindness (2001).</a> Small adult study examining postural and response measures; findings should be interpreted within its sample and methods.</li>
+    <li><a href="https://pubmed.ncbi.nlm.nih.gov/20853264/" target="_blank" rel="noopener">Postural control in subjects with visual impairment (2010).</a> Study comparing postural-control performance across visual-impairment groups.</li>
+    <li><a href="https://pubmed.ncbi.nlm.nih.gov/42495990/" target="_blank" rel="noopener">Guidelines for rigor and reproducibility of heart rate variability within human cardiovascular research (2026).</a> Methodological guidance on HRV measurement and interpretation.</li>
+    <li><a href="https://www.hhs.gov/ohrp/regulations-and-policy/guidance/faq/children-research/index.html" target="_blank" rel="noopener">U.S. Department of Health and Human Services, Office for Human Research Protections: Research with Children FAQs.</a> Regulatory and ethical guidance concerning parental permission and child assent.</li>
+    <li><a href="https://irbo.nih.gov/informed-consent/assent/" target="_blank" rel="noopener">National Institutes of Health: Assent guidance.</a> Guidance on assent and protections for research participants who cannot legally provide informed consent.</li>
+  </ol>
+  <p class="small">Reference access and publication details should be checked again when preparing a formal submission. This document does not replace a systematic review or a complete evidence appraisal.</p>
+</section>
+</article>
+</div>
+</main>
+<footer>
+  <div class="footbox">
+    <strong>Christopher Macachor</strong> · ORCID <a href="https://orcid.org/0009-0008-0100-2856">0009-0008-0100-2856</a> · <a href="https://scalar.macachor.org/">scalar.macachor.org</a><br>
+    Proposed methodology document · 2026. Substantive revisions should be versioned and assigned a new cryptographic identity when the canonical text is locked.
+  </div>
+</footer>
+</body>
+</html>
